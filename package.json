@@ -19,11 +19,13 @@
     "ai": "^7.0.162",
     "dotenv": "^18.0.9",
     "langchain": "^1.6.0",
+    "lucide-react": "^1.72.0",
     "next": "16.4.4",
     "openai": "^7.50.0",
     "puppeteer": "^25.16.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "react-markdown": "^10.1.0",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {

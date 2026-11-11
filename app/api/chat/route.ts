@@ -120,9 +120,6 @@ const ASTRA_DB_APPLICATION_TOKEN = requiredEnv("ASTRA_DB_APPLICATION_TOKEN");
 
 const OPENROUTER_API_KEY = requiredEnv("OPENROUTER_API_KEY");
 
-const CHAT_MODEL =
-    process.env.OPENROUTER_CHAT_MODEL || "openai/gpt-4o-mini";
-
 // OpenRouter chat client for AI SDK
 const openrouter = createOpenAI({
     apiKey: OPENROUTER_API_KEY,
@@ -156,7 +153,13 @@ async function generateEmbedding(text: string): Promise<number[]> {
 // API POST handler
 export async function POST(req: Request) {
     try {
-        const { messages } = await req.json();
+        const { messages, model } = await req.json();
+
+        // Dynamically select model: client override -> env variable -> default fallback
+        const chatModel =
+            (typeof model === "string" && model.trim()) ||
+            process.env.OPENROUTER_CHAT_MODEL?.trim() ||
+            "openai/gpt-4o-mini";
 
         if (!messages || messages.length === 0) {
             return new Response("No messages provided", {
@@ -238,16 +241,16 @@ END CONTEXT
 
         // Stream response using OpenRouter
         const result = streamText({
-            model: openrouter("openai/gpt-5"),
+            model: openrouter(chatModel),
             system: systemPrompt,
             messages: modelMessages,
-            maxOutputTokens: 1000,
+            maxOutputTokens: 900,
         });
-        
+
 
         // Return streaming response to useChat()
         return result.toUIMessageStreamResponse();
-    
+
 
     } catch (error) {
         console.error("F1GPT API Error:", error);

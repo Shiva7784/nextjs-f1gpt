@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="f1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff1801" />
+      <stop offset="100%" stop-color="#b00400" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="#0d0f14" />
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+  
+  <!-- Red Racing Wedge -->
+  <polygon points="6,24 16,8 26,8 20,24" fill="url(#f1Grad)" />
+  
+  <!-- F1 Letter Styling -->
+  <path d="M9 22 L14 11 L23 11 L20 15 L16 15 L14 18 L18 18 L16.5 22 Z" fill="#ffffff" />
+  
+  <!-- Speed Stripe -->
+  <circle cx="24" cy="21" r="2" fill="#06b6d4" />
+</svg>
+
