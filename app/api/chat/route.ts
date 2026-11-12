@@ -234,6 +234,8 @@ ${docContext}
 
 END CONTEXT
 -----------------
+QUESTION: ${latestMessage}
+-----------------
 `;
 
         // Convert UI messages into model messages
